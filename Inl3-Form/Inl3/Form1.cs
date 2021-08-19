@@ -38,8 +38,7 @@ namespace Inl3
         }
 
         /**
-         * Kollar att det inmatade personnumret är i rätt format, ååmmdd-xxxx
-         * 
+         * Kollar att det inmatade personnumret är enligt formatet i labblydelsen (ååmmddxxxx)
          */
         private Boolean checkSSNFormat(String input)
         {
@@ -58,7 +57,7 @@ namespace Inl3
 
         /**
          * Kollar om personnumret är korrekt enligt 21Algoritmen.
-         * Tar in personnumret som ååmmdd-xxxx
+         * Tar in personnumret som ååmmdd-xxxx eller utan bindestreck '-'
          */
         private Boolean checkValidSSN(String input)
         {
@@ -81,8 +80,8 @@ namespace Inl3
         }
 
         /**
-         * Returnerar talsumman enligt 21algoritmen. 
-         * Exempel : 14 ger 1+4 = 5, 21 ger 2 + 1 = 3
+         * Returnerar talsumman enligt 21Algoritmen. 
+         * Exempel: 14 ger 1+4 = 5, 21 ger 2 + 1 = 3
          */
         private int getNumberSum(int number)
         {
@@ -96,10 +95,12 @@ namespace Inl3
             }
             return sum;
         }
-
-
     }
-
+    
+    /**
+    Skräddarsydd personklass av det enklaste laget
+    Håller allt som relaterar till personen
+    */
     class Person
     {
         private string FName { get; set; }
@@ -115,9 +116,8 @@ namespace Inl3
             this.Sex = Convert.ToInt32(ssn[ssn.Length - 2].ToString()) % 2 == 0 ? "Kvinna" : "Man";
         }
 
-
         /**
-         * Skriver över den orginella toString metoden.
+         * En överskriven ToString()-metod, anpassad för uppgiftslydelsen
          */
         public override string ToString()
         {
@@ -126,7 +126,5 @@ namespace Inl3
                 + "Personnummer: " + SSN + "\n"
                 + "Kön: " + Sex;
         }
-
-
     }
 }
